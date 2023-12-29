@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { searchForShows, searchForPeople } from './../Api/tvmaze';
 import SearchForm from '../Components/SearchForm';
+import ShowGrid from '../Components/Shows/ShowGrid';
+import ActorsGrid from '../Components/Actors/ActorsGrid';
 export default function Home() {
 
     const [apiData, setApiData] = useState(null);
@@ -25,7 +27,6 @@ export default function Home() {
             setApiDataError(error);
         }
 
-
         console.log(apiData)
     }
 
@@ -33,11 +34,11 @@ export default function Home() {
         if (apiDataError) {
             return <div>Error occured:{apiDataError.message}</div>
         }
-
+        if(apiData?.length === 0){
+            return <div>No results found</div>
+        }
         if (apiData) {
-            return apiData[0].show?
-            apiData.map((data) => <div key={data.show.id}>{data.show.name}</div>):
-            apiData.map((data) => <div key={data.person.id}>{data.person.name}</div>)
+            return apiData[0].show ? (<ShowGrid shows={apiData} />) : (<ActorsGrid person={apiData} />)
         }
         return null;
     }
