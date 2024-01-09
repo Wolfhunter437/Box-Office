@@ -89,7 +89,7 @@ const Genres = styled.div`
   flex-wrap: wrap;
   span {
     margin: 0px 5px;
-    margin-bottom: 0;
+    margin-bottom: 4px;
     color: ${({ theme }) => theme.mainColors.white};
     background-color: ${({ theme }) => theme.mainColors.magenta};
     padding: 3px 13px;
