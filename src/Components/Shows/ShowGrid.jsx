@@ -1,5 +1,6 @@
 import ShowCard from "./ShowCard";
 import { useStarredShows } from "../../Lib/StarredShows";
+import { FadeIn, FlexGrid } from "../Common/FlexGrid";
 
 export default function ShowGrid({ shows }) {
     const [starredShows, dispatchStarred] = useStarredShows()
@@ -9,22 +10,24 @@ export default function ShowGrid({ shows }) {
     const onStarMeClick = (showId) => {
         const isStarred = starredShows.includes(showId)
 
-        if(isStarred) {
+        if (isStarred) {
             dispatchStarred({ type: 'UNSTAR', showId })
         }
-        else{
+        else {
             dispatchStarred({ type: 'STAR', showId })
         }
     }
     return (
-        <div>
-            {shows.map(data => (<ShowCard key={data.show.id} 
-            id={data.show.id} 
-            name={data.show.name} 
-            image={data.show.image ? data.show.image.medium : "/imgNotFound.png"} 
-            summary={data.show.summary}
-            onStarMeClick={onStarMeClick}
-            isStarred={starredShows.includes(data.show.id)} />))}
-        </div>
+        <FadeIn>
+            <FlexGrid>
+                {shows.map(data => (<ShowCard key={data.show.id}
+                    id={data.show.id}
+                    name={data.show.name}
+                    image={data.show.image ? data.show.image.medium : "/imgNotFound.png"}
+                    summary={data.show.summary}
+                    onStarMeClick={onStarMeClick}
+                    isStarred={starredShows.includes(data.show.id)} />))}
+            </FlexGrid>
+        </FadeIn>
     )
 }
