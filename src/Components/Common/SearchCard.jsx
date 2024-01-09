@@ -5,7 +5,14 @@ export const SearchImgWrapper = styled.div`
   height: 420px;
   border-radius: 40px;
   overflow: hidden;
-  border: 1px solid #ddd;
+  border: 2px solid ${({ theme }) => theme.mainColors.white};
+  &:hover {
+    border: 2px solid ${({ theme }) => theme.mainColors.magenta};
+    transition: 0.4s ease-out;
+  }
+  &:not(hover){
+    transition: 0.3s ease-out;
+  }
   img {
     object-fit: cover;
     height: 100%;

@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
 const theme = {
   fontFamily: 'Roboto, sans-serif',
   mainColors: {
-    magenta: 'magenta',
+    magenta: 'red',
     white: 'white',
     darkgray: 'darkgray',
   },

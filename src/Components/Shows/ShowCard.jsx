@@ -1,12 +1,12 @@
-import {useRef} from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {SearchCard, SearchImgWrapper} from '../Common/SearchCard'
-import {StarIcon} from '../Common/StarIcon'
+import { SearchCard, SearchImgWrapper } from '../Common/SearchCard'
+import { StarIcon } from '../Common/StarIcon'
 
 export default function ShowCard({ name, image, id, summary, onStarMeClick, isStarred }) {
 
-  const summaryStripped = summary ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, "")+'...' : "No description";
+  const summaryStripped = summary ? summary.split(" ").slice(0, 10).join(" ").replace(/<.+?>/g, "") + '...' : "No description";
 
   const starBtnRef = useRef()
 
@@ -15,24 +15,25 @@ export default function ShowCard({ name, image, id, summary, onStarMeClick, isSt
 
     const starBtnE1 = starBtnRef.current
 
-    if(!starBtnE1) return;
-    if(isStarred) {
+    if (!starBtnE1) return;
+    if (isStarred) {
       starBtnE1.classList.remove('animate')
     }
-    else{
+    else {
       starBtnE1.classList.add('animate')
     }
   }
 
   return (
     <SearchCard>
-      <SearchImgWrapper>
-        <img src={image} alt={name} />
-      </SearchImgWrapper>
-      <h1>{name}</h1>
-      <Summary>{summaryStripped}</Summary>
+      <StyleLink to={`/show/${id}`} target="_blank" rel="noreferrer">
+        <SearchImgWrapper>
+          <img src={image} alt={name} />
+        </SearchImgWrapper>
+        <h1>{name}</h1>
+        <Summary>{summaryStripped}</Summary>
+      </StyleLink>
       <ActionSection>
-        <Link to={`/show/${id}`} target="_blank" rel="noreferrer">Read more</Link>
         <StarBtn type="button" onClick={handleStarClick} ref={starBtnRef}  >
           <StarIcon active={isStarred} />
         </StarBtn>
@@ -59,6 +60,10 @@ const ActionSection = styled.div`
       transition: 0.3s ease-out;
     }
   }
+`;
+
+const StyleLink = styled(Link)`
+text-decoration: none;
 `;
 
 const Summary = styled.p`
