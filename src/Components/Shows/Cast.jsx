@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { FadeIn } from '../Common/FlexGrid';
+import { FadeIn } from '../Common/FlexGrid'
+import ImgNotFound from '../../assets/imgNotFound.png'
 
 export default function Cast({ cast }) {
   return (
@@ -7,7 +8,7 @@ export default function Cast({ cast }) {
       <CastList>
         {cast.map(({ person, character, voice }) => (<div key={person.id} className='cast-item'>
           <div className='pic-wrapper'>
-            <img src={person.image ? person.image.medium : "/imgNotFound.png"} alt="" />
+            <img src={person.image ? person.image.medium : ImgNotFound} alt="" />
           </div>
           <div className='actor'>{person.name} | {character.name} {voice ? '| Voiceover' : ''}</div>
         </div>))}

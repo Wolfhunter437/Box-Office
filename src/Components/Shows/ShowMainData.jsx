@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 import { StarIcon } from '../Common/StarIcon';
 import { FadeIn } from '../Common/FlexGrid';
+import ImgNotFound from '../../assets/imgNotFound.png'
 
 export default function ShowMainData({ image, name, rating, summary, genres }) {
   return (
     <FadeIn>
       <MainDataWrapper>
         <div className="img-wrap">
-          <img className='img' src={image ? image.original : '/imgNotFound.png'} alt="" />
+          <img className='img' src={image ? image.original : ImgNotFound} alt="" />
         </div>
         <DataSection>
           <Headline>
