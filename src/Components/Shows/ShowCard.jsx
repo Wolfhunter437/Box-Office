@@ -1,4 +1,5 @@
 import {useRef} from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {SearchCard, SearchImgWrapper} from '../Common/SearchCard'
 import {StarIcon} from '../Common/StarIcon'
@@ -31,7 +32,7 @@ export default function ShowCard({ name, image, id, summary, onStarMeClick, isSt
       <h1>{name}</h1>
       <Summary>{summaryStripped}</Summary>
       <ActionSection>
-        <a href={`/show/${id}`} target="_blank" rel="noreferrer">Read more</a>
+        <Link to={`/show/${id}`} target="_blank" rel="noreferrer">Read more</Link>
         <StarBtn type="button" onClick={handleStarClick} ref={starBtnRef}  >
           <StarIcon active={isStarred} />
         </StarBtn>
